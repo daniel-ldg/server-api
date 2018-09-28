@@ -5,38 +5,38 @@ using WebServer.Models;
 namespace WebServer.Controllers
 {
     [Route("api/[controller]")]
-    public class UsuariosController : Controller
+    public class SmartWatchController : Controller
     {
 
         /*
-        Obtiene el listado de usuarios
+        Obtiene el listado de datossmartwatch
          */
          [HttpGet]
          public ActionResult Get() 
          {
-             return Ok(Datos.Usuarios);
+             return Ok(Datos.DatosSmartWatch);
          }
 
          /*
          
           */
         [HttpPost]
-        public ActionResult Post([FromBody] Usuario usuario)
+        public ActionResult Post([FromBody] SmartWatch smartWatch)
         {
-            // si el modelo (login) es inválido o es null, regresa 400
-            if (!this.ModelState.IsValid || usuario == null)
+            // si el modelo es inválido o es null, regresa 400
+            if (!this.ModelState.IsValid || smartWatch == null)
             {
                 return BadRequest();
             }
             else
             {
                 //TODO hacer tal cosa
-                int nextId = Datos.Usuarios.Count;
-                usuario.ID = nextId;
-                Datos.Usuarios.Add(nextId, usuario);
+                int nextId = Datos.DatosSmartWatch.Count;
+                smartWatch.id = nextId;
+                Datos.DatosSmartWatch.Add(nextId, smartWatch);
 
                 //TODO calidar aquí
-                return Ok(usuario);
+                return Ok(smartWatch);
             }
         }
 
