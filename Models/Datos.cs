@@ -23,9 +23,13 @@ namespace WebServer.Models
 
         public static IDictionary<int, Email> DatosEmail {get; set;}
 
+        public static IDictionary<int, DatosAtaque> DatosAtaque {get; set;}
+
         // Constructor de la clase
         static Datos()
         {
+            DatosAtaque = new Dictionary<int, DatosAtaque>();
+            DatosAtaque.Add(0, new DatosAtaque());
 
             DatosEmail = new Dictionary<int, Email>();
             DatosEmail.Add(0, new Email {Id = 0, Remitente = "test", Destinatario = "test", Subject = "test", Body = "test"});
