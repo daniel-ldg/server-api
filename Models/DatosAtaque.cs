@@ -14,5 +14,8 @@ namespace WebServer.Models
 
         [Required]
         public int numIteraciones {get; set;}
+
+        [Required]
+        public bool enParalelo{get; set;}
     }
 }

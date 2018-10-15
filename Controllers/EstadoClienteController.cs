@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.Numerics;
 using System.Linq;
@@ -9,34 +8,29 @@ using WebServer.Models;
 namespace WebServer.Controllers
 {
     [Route("api/[controller]")]
-    public class DatosAtaqueController : Controller
+    public class EstadoClienteController : Controller
     {
-        private static int id = 0;
 
         [HttpGet]
          public ActionResult Get() 
          {
-             return Ok(Datos.DatosAtaque.ElementAt(0).Value);
+            return Ok(Datos.datosEstadoCliente);
          }
          
         [HttpPost]
-        public ActionResult Post([FromBody] DatosAtaque datosAtaque)
+        public ActionResult Post([FromBody] EstadoCliente estadoCliente)
         {
             // si el modelo es inválido o es null, regresa 400
-            if (!this.ModelState.IsValid || datosAtaque == null)
+            if (!this.ModelState.IsValid || estadoCliente == null)
             {
                 return BadRequest();
             }
             else
             {
-                Datos.DatosAtaque.Clear();
-                int nextId = id++;
-                datosAtaque.id = nextId;
-                
-                Datos.DatosAtaque.Add(0, datosAtaque);
+                Datos.datosEstadoCliente = estadoCliente;
 
                 //TODO calidar aquí
-                return Ok(datosAtaque);
+                return Ok(Datos.datosEstadoCliente);
                 
             }
         }

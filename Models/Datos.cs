@@ -25,9 +25,13 @@ namespace WebServer.Models
 
         public static IDictionary<int, DatosAtaque> DatosAtaque {get; set;}
 
+        public static EstadoCliente datosEstadoCliente {get; set;}
+
         // Constructor de la clase
         static Datos()
         {
+            datosEstadoCliente = new EstadoCliente {peticionesAtaque = -1, peticionesHechas = -1, peticionesRechazadas = -1, estado = "ESPERANDO"};
+
             DatosAtaque = new Dictionary<int, DatosAtaque>();
             DatosAtaque.Add(0, new DatosAtaque());
 
