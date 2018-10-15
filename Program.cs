@@ -10,12 +10,22 @@ namespace WebServer {
     public class Program {
         public static void Main(string[] args) {
 
+            string port;
+            if (args.Length == 0) 
+            {
+                port = "5000";
+            }
+            else
+            {
+                port = args[0];
+            }
+
             var host = new WebHostBuilder()
                 .UseKestrel()
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseIISIntegration()
                 .UseStartup<Startup>()
-                //.UseUrls("http://192.168.43.165:8080")
+                .UseUrls("http://0.0.0.0:" + port)
                 .Build();
 
             host.Run();

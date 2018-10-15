@@ -1,9 +1,11 @@
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using WebServer.Models;
 
 namespace WebServer.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     public class SmartWatchController : Controller
     {
@@ -14,7 +16,7 @@ namespace WebServer.Controllers
          [HttpGet]
          public ActionResult Get() 
          {
-             return Ok(Datos.DatosSmartWatch);
+            return Ok(Datos.DatosSmartWatch);
          }
 
          /*
